@@ -184,9 +184,31 @@ figure {
   margin: 0 0 1rem;
 }
 
+ .dashed-border img {
+    border: 4px dashed black;        /* Dashed black border */
+    padding: 5px;                    /* Space between image and border */
+    border-radius: 50%;             /* Make the border circular */
+    display: inline-block;
+  }
+
+.wave-once {
+    animation: wave-sea 1.5s ease-in-out 1;
+    transform-origin: bottom center;
+    display: inline-block;
+  }
+
+
+  @keyframes wave-sea {
+    0%   { transform: rotate(0deg) translateY(0); }
+    25%  { transform: rotate(5deg) translateY(-7px); }
+    50%  { transform: rotate(-5deg) translateY(0px); }
+    75%  { transform: rotate(3deg) translateY(-7px); }
+    100% { transform: rotate(0deg) translateY(0); }
+  }
+
 img {
-  vertical-align: middle;
-  border-style: none;
+  vertical-align: right;
+  
 }
 
 svg {
