@@ -21,13 +21,11 @@ body.dark-mode{
 }
 .theme-toggle {
   position: absolute;
-  top: 400px;
-  left: 17.5cm;
-  right: 15px;
+  top: 15px;
+  right: 20px;
   cursor: pointer;
-  font-size: 1.2rem;
-  color: rgb(0, 0, 0);
-  z-index: 100;
+  font-size: 18px;
+  z-index: 10;
 }
 
 .login-card {
