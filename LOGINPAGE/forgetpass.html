@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="dark-mode">
+  <div class="theme-toggle" onclick="toggleTheme()">🌙 / ☀️</div>
+
+  <div class="login-card">
+    <div class="mac-buttons">
+      <span class="red" onclick="redAction()"></span>
+      <span class="yellow" onclick="yellowAction()"></span>
+      <span class="green" onclick="greenAction()"></span>
+    </div>
+
+    
+    <div class="card-content">
+      <h2 class="mac-title">Forgot Password</h2>
+      <form onsubmit="return handleForgot(event)">
+        <div class="input-group">
+          <input type="text" id="username" required />
+          <label>Your Name</label>
+        </div>
+        <div class="input-group">
+          <input type="password" id="newPassword" required />
+          <label>New Password</label>
+        </div>
+        <button type="submit" class="login-button">Change Password</button>
+        
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
