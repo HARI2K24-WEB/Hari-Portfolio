@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="dark-mode">
-  <div class="theme-toggle" onclick="toggleTheme()">🌙 / ☀️</div>
-
+  
   <div class="login-card">
     <div class="mac-buttons">
-      <span class="red" onclick="redAction()"></span>
-      <span class="yellow" onclick="yellowAction()"></span>
-      <span class="green" onclick="greenAction()"></span>
+      <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+      <span class="red" id="redBtn"></span>
+      <span class="yellow" id="yellowBtn"></span>
+      <span class="green" id="greenBtn"></span>
     </div>
 
     
@@ -21,12 +21,12 @@
       <h2 class="mac-title">Forgot Password</h2>
       <form onsubmit="return handleForgot(event)">
         <div class="input-group">
-          <input type="text" id="username" required />
-          <label>Your Name</label>
+          <input placeholder="Username" id="username" required />
+          
         </div>
         <div class="input-group">
-          <input type="password" id="newPassword" required />
-          <label>New Password</label>
+          <input placeholder="password" id="newPassword" required />
+         
         </div>
         <button type="submit" class="login-button">Change Password</button>
         

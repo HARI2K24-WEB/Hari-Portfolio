@@ -9,6 +9,17 @@ function handleLogin(e) {
     btn.disabled = false;
   }, 1500);
 }
+function handleForgot(e) {
+  e.preventDefault();
+  const btn = document.querySelector('.login-button');
+  btn.textContent = "Change Password...";
+  btn.disabled = true;
+  setTimeout(() => {
+    alert("Change Password in successfully!");
+    btn.textContent = "Forgot Password";
+    btn.disabled = false;
+  }, 1500);
+}
 
 function showWelcome() {
   const content = document.getElementById("cardContent");
