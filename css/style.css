@@ -57,10 +57,6 @@ body {
   background-color: #000000;
 }
 
-[tabindex="-1"]:focus:not(:focus-visible) {
-  outline: 0 !important;
-}
-
 hr {
   box-sizing: content-box;
   height: 0;
@@ -543,6 +539,7 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
+  
 }
 
 .img-thumbnail {
