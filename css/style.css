@@ -57,6 +57,48 @@ body {
   background-color: #000000;
 }
 
+
+.cssbuttons-io-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.5em 0.8em 1.2em;
+  color: white;
+  background: #ff6fc6;
+  background: linear-gradient(
+    0deg,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 100%
+  );
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #fa01d0be;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+
+}
+
+
+.cssbuttons-io-button svg {
+  margin-right: 8px;
+
+}
+
+.cssbuttons-io-button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #000000be;
+  color: #000;
+}
+
+.cssbuttons-io-button:active {
+  box-shadow: 0 0.3em 1em -0.5em #000000be;
+}
+.downloadtag:hover{
+  color: #000;
+}
+
+
 hr {
   box-sizing: content-box;
   height: 0;
