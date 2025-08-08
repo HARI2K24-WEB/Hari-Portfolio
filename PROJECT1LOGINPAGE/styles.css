@@ -9,12 +9,10 @@ body {
   height: 100vh;
   transition: background 0.3s ease;
 }
-
 body.light-mode {
   background-color: #ffffff;
   color: #000000;
 }
-
 body.dark-mode{
      background-color: #000000;
   color: #ffffff;
@@ -27,7 +25,6 @@ body.dark-mode{
   font-size: 18px;
   z-index: 10;
 }
-
 .login-card {
   background: #1e1e1e;
   color: white;
@@ -38,17 +35,14 @@ body.dark-mode{
   position: relative;
   transition: transform 0.4s ease;
 }
-
 .card-content {
   transition: all 0.3s ease;
 }
-
 .mac-buttons {
   display: flex;
   gap: 8px;
   margin-bottom: 10px;
 }
-
 .mac-buttons span {
   height: 12px;
   width: 12px;
@@ -56,21 +50,17 @@ body.dark-mode{
   display: inline-block;
   cursor: pointer;
 }
-
 .red { background: #ff5f57; }
 .yellow { background: #ffbd2e; }
 .green { background: #28c840; }
-
 .mac-title {
   margin: 10px;
   text-align: center;
 }
-
 .input-group {
   position: relative;
   margin: 20px;
 }
-
 .input-group input {
   width: 100%;
   padding: 10px;
@@ -80,7 +70,6 @@ body.dark-mode{
   border-radius: 6px;
   outline: none;
 }
-
 .input-group label {
   position: absolute;
   top: -10px;
@@ -88,7 +77,6 @@ body.dark-mode{
   font-size: 12px;
   color: #aaa;
 }
-
 .login-button {
   width: 320px;
   padding: 10px;
@@ -102,7 +90,6 @@ body.dark-mode{
   margin-left: 25px;
   transition: background 0.3s ease;
 }
-
 .forgot-link {
   display: block;
   text-align: center;
@@ -111,22 +98,18 @@ body.dark-mode{
   font-size: 14px;
   margin-bottom: -0px;
 }
-
 body.light-mode .login-card {
   background: #fff;
   color: #000;
 }
-
 body.light-mode .input-group input {
   background: #eee;
   color: #000;
 }
-
 body.light-mode .login-button {
   background: #007aff;
   color: white;
 }
-
 body.light-mode .forgot-link {
   color: #444;
 }

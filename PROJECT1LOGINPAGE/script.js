@@ -8,7 +8,7 @@ function handleLogin(e) {
     btn.textContent = "Log In";
     btn.disabled = false;
   }, 1500);
-}
+ }
 function handleForgot(e) {
   e.preventDefault();
   const btn = document.querySelector('.login-button');
@@ -20,12 +20,10 @@ function handleForgot(e) {
     btn.disabled = false;
   }, 1500);
 }
-
 function showWelcome() {
   const content = document.getElementById("cardContent");
   content.innerHTML = `<h2 style="text-align:center; color:white;">Welcome Broo 😎</h2>`;
 }
-
 function rotateToSignIn() {
   const content = document.getElementById("cardContent");
   content.innerHTML = `
@@ -43,7 +41,6 @@ function rotateToSignIn() {
       <a href="forgot.html" class="forgot-link">Forgot Password?</a>
     </form>`;
 }
-
 function rotateToLogin() {
   const content = document.getElementById("cardContent");
   content.innerHTML = `
@@ -60,13 +57,11 @@ function rotateToLogin() {
       <a href="forgot.html" class="forgot-link">Forgot Password?</a>
     </form>`;
 }
-
 function toggleTheme() {
   const body = document.body;
   body.classList.toggle("light-mode");
   body.classList.toggle("dark-mode");
 }
-
 window.onload = function () {
   document.getElementById("redBtn").onclick = showWelcome;
   document.getElementById("yellowBtn").onclick = rotateToSignIn;
