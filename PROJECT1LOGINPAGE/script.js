@@ -43,19 +43,19 @@ function rotateToSignIn() {
 }
 function rotateToLogin() {
   const content = document.getElementById("cardContent");
-  content.innerHTML = `
-    <h2 class="mac-title">Login</h2>
-    <form onsubmit="return handleLogin(event)">
-      <div class="input-group">
-        <input placeholder="Username" required />
-      </div>
-      <div class="input-group">
-        <input placeholder="password" required />
-        
-      </div>
-      <button type="submit" class="login-button">Log In</button>
-      <a href="forgot.html" class="forgot-link">Forgot Password?</a>
-    </form>`;
+      content.innerHTML = `
+        <h2 class="mac-title">Login</h2>
+        <form onsubmit="return handleLogin(event)">
+          <div class="input-group">
+            <input placeholder="Username" required />
+          </div>
+          <div class="input-group">
+            <input placeholder="password" required />
+            
+          </div>
+          <button type="submit" class="login-button">Log In</button>
+          <a href="forgot.html" class="forgot-link">Forgot Password?</a>
+        </form>`;
 }
 function toggleTheme() {
   const body = document.body;

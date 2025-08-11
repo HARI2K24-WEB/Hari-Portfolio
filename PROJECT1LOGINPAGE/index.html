@@ -7,26 +7,21 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="dark-mode">
-  
   <div class="login-card" id="loginBox">
-
     <div class="mac-buttons">
       <div class="theme-toggle" onclick="toggleTheme()"> 🌓</div>
       <span class="red" id="redBtn"></span>
       <span class="yellow" id="yellowBtn"></span>
       <span class="green" id="greenBtn"></span>
     </div>
-
     <div id="cardContent">
       <h2 class="mac-title">Login</h2>
       <form onsubmit="return handleLogin(event)">
         <div class="input-group">
           <input placeholder="Username" required />
-     
         </div>
         <div class="input-group">
           <input placeholder="password" required />
-          
         </div>
         <button type="submit" class="login-button">Log In</button>
         <a href="forget.html" class="forgot-link">Forgot Password?</a>
