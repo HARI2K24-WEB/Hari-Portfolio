@@ -20,6 +20,13 @@ function handleForgot(e) {
     btn.disabled = false;
   }, 1500);
 }
+
+window.onload = function () {
+  document.getElementById("redBtn").onclick = showWelcome;
+  document.getElementById("yellowBtn").onclick = rotateToSignIn;
+  document.getElementById("greenBtn").onclick = rotateToLogin;
+};
+
 function showWelcome() {
   const content = document.getElementById("cardContent");
   content.innerHTML = `<h2 style="text-align:center; color:white;">Welcome Broo 😎</h2>`;
@@ -62,8 +69,6 @@ function toggleTheme() {
   body.classList.toggle("light-mode");
   body.classList.toggle("dark-mode");
 }
-window.onload = function () {
-  document.getElementById("redBtn").onclick = showWelcome;
-  document.getElementById("yellowBtn").onclick = rotateToSignIn;
-  document.getElementById("greenBtn").onclick = rotateToLogin;
-};
+
+
+
