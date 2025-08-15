@@ -26,7 +26,6 @@
   </style>
 </head>
 <body>
-
   <script>
     const particleCount = 25;
     const particles = [];
@@ -39,17 +38,13 @@
       const particle = document.createElement("div");
       particle.classList.add("particle");
       document.body.appendChild(particle);
-
       const color = colors[i % colors.length];
       particle.style.background = color;
       particle.style.boxShadow = `0 0 15px ${color}`;
-
       particles.push({ el: particle, x: 0, y: 0 });
     }
-
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-
     document.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
@@ -58,21 +53,16 @@
     function animate() {
       let x = mouseX;
       let y = mouseY;
-
       particles.forEach((p, i) => {
         p.x += (x - p.x) * 0.2;
         p.y += (y - p.y) * 0.2;
-
         const scale = 1.2 - i / particleCount;
         p.el.style.transform = `translate(${p.x}px, ${p.y}px) scale(${scale})`;
-
         x = p.x;
         y = p.y;
       });
-
       requestAnimationFrame(animate);
     }
-
     animate();
   </script>
 
