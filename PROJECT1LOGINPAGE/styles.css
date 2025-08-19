@@ -10,7 +10,7 @@ body {
   transition: background 0.3s ease;
 }
 body.light-mode {
-  background-color: #ffffff;
+  background-color: #030303;
   color: #000000;
 }
 body.dark-mode{
@@ -31,7 +31,7 @@ body.dark-mode{
   width: 360px;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
   position: relative;
   transition: transform 0.4s ease;
 }
