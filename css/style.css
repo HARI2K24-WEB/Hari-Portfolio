@@ -58,11 +58,13 @@ body {
     position: relative;
      left: 80px;  
 }
-
 .proj2{
    position: relative;
 }
-
+.project2{
+  
+  margin-left: 60px;
+}
 .cssbuttons-io-button {
   display: flex;
   align-items: center;
