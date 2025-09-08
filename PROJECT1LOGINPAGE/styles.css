@@ -58,6 +58,9 @@ body.dark-mode{
   margin: 10px;
   text-align: center;
 }
+#logo{
+  margin:170px;
+}
 .input-group {
   position: relative;
   margin: 20px;

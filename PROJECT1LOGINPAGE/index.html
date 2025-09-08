@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
   <link rel="stylesheet" href="styles.css" />
-  
-</head>
-<body class="dark-mode">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
   <div class="login-card" id="loginBox">
     <div class="mac-buttons">
       <div class="theme-toggle" onclick="toggleTheme()"> 🌓</div>
+     
       <span class="red" id="redBtn"></span>
       <span class="yellow" id="yellowBtn"></span>
       <span class="green" id="greenBtn"></span>
 
     </div>
     <div id="cardContent">
-
+     
       <h2 class="mac-title">Login</h2>
+       <i id="logo" class="bi bi-apple"></i>
       <form onsubmit="return handleLogin(event)">
 
 
@@ -37,5 +38,8 @@
   </div>
 
   <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
 </body>
+  
 </html>
