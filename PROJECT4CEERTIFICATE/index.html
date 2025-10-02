@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .input-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .input-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        label {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .generate-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+        
+        .generate-btn:hover {
+            background-color: #2a75f0;
+        }
+        
+        .certificate-container {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .certificate {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary-color), #2a75f0, var(--primary-color));
+        }
+        
+        .certificate-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .certificate-header h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .certificate-body {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .recipient-name {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .certificate-text {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .signatures {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+        
+        .signature {
+            text-align: center;
+        }
+        
+        .signature-name {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .signature-title {
+            font-size: 14px;
+            color: #777;
+            text-transform: uppercase;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .download-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+        }
+        
+        .pdf-btn {
+            background-color: #ff3a3a;
+            color: white;
+        }
+        
+        .pdf-btn:hover {
+            background-color: #e03535;
+        }
+        
+        .jpg-btn {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .jpg-btn:hover {
+            background-color: #449d48;
+        }
+        
+        .watermark {
+            position: absolute;
+            opacity: 0.03;
+            font-size: 180px;
+            font-weight: bold;
+            color: #000;
+            transform: rotate(-45deg);
+            pointer-events: none;
+            z-index: 1;
+            top: 30%;
+            left: 10%;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Certificate Generator</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="name-input">Enter Recipient's Name</label>
+                <input type="text" id="name-input" placeholder="e.g., Juliana Silva">
+            </div>
+            <button class="generate-btn" id="generate-btn">Generate Certificate</button>
+        </div>
+        
+        <div class="certificate-container" id="certificate-container">
+            <div class="certificate" id="certificate">
+                <div class="watermark">CERTIFICATE</div>
+                <div class="certificate-header">
+                    <h2>Certificate of Achievement</h2>
+                </div>
+                
+                <div class="certificate-body">
+                    <div class="recipient-name" id="recipient-name">Juliana Silva</div>
+                    <div class="certificate-text">
+                        This certificate is proudly presented to recognize outstanding achievement and dedication. 
+                        The recipient has demonstrated exceptional skill and commitment to excellence in their field.
+                    </div>
+                </div>
+                
+                <div class="signatures">
+                    <div class="signature">
+                        <div class="signature-name">Rufus Stewart</div>
+                        <div class="signature-title">Representative</div>
+                    </div>
+                    <div class="signature">
+                        <div class="signature-name">Olivia Wilson</div>
+                        <div class="signature-title">Representative</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="download-buttons">
+                <button class="download-btn pdf-btn" id="download-pdf">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.5a.5.5 0 0 1 1 0V11h1.216C11.995 11 13 9.99 13 8.773c0-1.216-1.02-2.228-2.284-2.228h-.281a.5.5 0 0 1-.5-.5V5.36a.5.5 0 0 1 .33-.939c.67.13 1.332.454 1.798.993.466.539.804 1.243.804 1.996 0 1.794-1.492 3.25-3.333 3.25H8.5v2.5a.5.5 0 0 1-1 0V11H3.781C2.352 11 1 9.646 1 7.318c0-1.552 1.055-2.87 2.5-3.187.305-.08.58-.256.8-.5.22-.244.375-.543.465-.87.09-.327.112-.68.062-1.02A4.53 4.53 0 0 1 8 1a4.53 4.53 0 0 1 3.173 1.28.5.5 0 0 1-.707.707A3.536 3.536 0 0 0 8 2z"/>
+                    </svg>
+                    Download PDF
+                </button>
+                <button class="download-btn jpg-btn" id="download-jpg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.5a.5.5 0 0 1 1 0V11h1.216C11.995 11 13 9.99 13 8.773c0-1.216-1.02-2.228-2.284-2.228h-.281a.5.5 0 0 1-.5-.5V5.36a.5.5 0 0 1 .33-.939c.67.13 1.332.454 1.798.993.466.539.804 1.243.804 1.996 0 1.794-1.492 3.25-3.333 3.25H8.5v2.5a.5.5 0 0 1-1 0V11H3.781C2.352 11 1 9.646 1 7.318c0-1.552 1.055-2.87 2.5-3.187.305-.08.58-.256.8-.5.22-.244.375-.543.465-.87.09-.327.112-.68.062-1.02A4.53 4.53 0 0 1 8 1a4.53 4.53 0 0 1 3.173 1.28.5.5 0 0 1-.707.707A3.536 3.536 0 0 0 8 2z"/>
+                    </svg>
+                    Download JPG
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generate-btn');
+            const nameInput = document.getElementById('name-input');
+            const certificateContainer = document.getElementById('certificate-container');
+            const recipientName = document.getElementById('recipient-name');
+            const downloadPdfBtn = document.getElementById('download-pdf');
+            const downloadJpgBtn = document.getElementById('download-jpg');
+            const certificate = document.getElementById('certificate');
+            
+            generateBtn.addEventListener('click', function() {
+                const name = nameInput.value.trim();
+                
+                if (name === '') {
+                    alert('Please enter a name');
+                    return;
+                }
+                
+                recipientName.textContent = name;
+                certificateContainer.style.display = 'flex';
+                
+                // Scroll to certificate
+                certificateContainer.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            downloadPdfBtn.addEventListener('click', function() {
+                html2canvas(certificate).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF('l', 'mm', 'a4');
+                    
+                    const imgWidth = 297; // A4 width in mm
+                    const imgHeight = canvas.height * imgWidth / canvas.width;
+                    
+                    doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                    doc.save('certificate.pdf');
+                });
+            });
+            
+            downloadJpgBtn.addEventListener('click', function() {
+                html2canvas(certificate).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'certificate.jpg';
+                    link.href = canvas.toDataURL('image/jpeg', 0.9);
+                    link.click();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

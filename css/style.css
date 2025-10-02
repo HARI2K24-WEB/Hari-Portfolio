@@ -54,7 +54,6 @@ nav,
 section {
   display: block;
 }
-
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -65,21 +64,17 @@ body {
   text-align: left;
   background-color: #000000;
 }
-
 .proj1 {
   position: relative;
   left: 80px;
 }
-
 .proj2 {
   position: relative;
 }
-
 .project2 {
 
   margin-left: 60px;
 }
-
 .cssbuttons-io-button {
   display: flex;
   align-items: center;
