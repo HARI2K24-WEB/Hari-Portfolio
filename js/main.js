@@ -1,13 +1,59 @@
-(function ($) {
-    "use strict";
-    // Navbar on scrolling
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 200) {
-            $('.navbar').fadeIn('slow').css('display', 'flex');
-        } else {
-            $('.navbar').fadeOut('slow').css('display', 'none');
-        }
-    });
+
+ document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all scrollable containers
+            const containers = document.querySelectorAll('.certificates-container');
+            
+            containers.forEach(container => {
+                const scrollElement = container.querySelector('.certificates-scroll');
+                const prevBtn = container.querySelector('.scroll-btn.prev');
+                const nextBtn = container.querySelector('.scroll-btn.next');
+                
+                // Function to update button visibility
+                const updateButtons = () => {
+                    const scrollLeft = scrollElement.scrollLeft;
+                    const scrollWidth = scrollElement.scrollWidth;
+                    const clientWidth = scrollElement.clientWidth;
+                    
+                    // Show/hide prev button
+                    if (scrollLeft > 10) {
+                        prevBtn.classList.remove('hidden');
+                    } else {
+                        prevBtn.classList.add('hidden');
+                    }
+                    
+                    // Show/hide next button
+                    if (scrollLeft < scrollWidth - clientWidth - 10) {
+                        nextBtn.classList.remove('hidden');
+                    } else {
+                        nextBtn.classList.add('hidden');
+                    }
+                };
+                
+                // Scroll event listener
+                scrollElement.addEventListener('scroll', updateButtons);
+                
+                // Button click handlers
+                prevBtn.addEventListener('click', () => {
+                    scrollElement.scrollBy({
+                        left: -300,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    scrollElement.scrollBy({
+                        left: 300,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                // Initial button state
+                updateButtons();
+                
+                // Update buttons on window resize
+                window.addEventListener('resize', updateButtons);
+            });
+        });
     // Smooth scrolling on the navbar links
     $(".navbar-nav a").on('click', function (event) {
         if (this.hash !== "") {
@@ -80,5 +126,49 @@
         items: 1
     });
 
-})(jQuery);
+    // Certificate modal functionality
+    const modal = document.getElementById('certModal');
+    const modalImg = document.getElementById('certImage');
+
+    // Open modal when clicking view certificate button
+    $('.view-cert').on('click', function() {
+        const imgSrc = $(this).data('cert');
+        modalImg.src = imgSrc;
+        modal.classList.add('active');
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+
+    // Close modal with escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+        }
+    });
+
+    // About section toggle (click the overlay title to hide/show the about content)
+    (function() {
+        const aboutToggle = document.getElementById('about-toggle');
+        const aboutSection = document.getElementById('about');
+        if (!aboutToggle || !aboutSection) return;
+
+        aboutToggle.addEventListener('click', function() {
+            const isCollapsed = aboutSection.classList.toggle('about-collapsed');
+            // aria-expanded true when content is visible
+            aboutToggle.setAttribute('aria-expanded', String(!isCollapsed));
+            // Update text to indicate action (keeps original main word)
+            if (isCollapsed) {
+                aboutToggle.innerText = 'Show About';
+            } else {
+                aboutToggle.innerText = 'About Me & Qualification';
+            }
+        });
+    })();
+
+
 

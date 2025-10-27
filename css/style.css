@@ -1,3 +1,10 @@
+/* =====================
+  Project stylesheet
+  - Variables and root custom properties
+  - Core resets and Bootstrap overrides follow
+  - Custom sections are grouped near the top for easier editing
+  ===================== */
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -95,7 +102,9 @@ body {
 
 }
 
-
+.profile{
+  background-color: white;
+}
 .cssbuttons-io-button svg {
   margin-right: 8px;
 
@@ -112,13 +121,6 @@ body {
 
 .downloadtag:hover {
   color: #000;
-}
-
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
 }
 
 h1,
@@ -280,6 +282,305 @@ figure {
     transform: rotate(0deg) translateY(0);
   }
 }
+
+/* Skill animations: fade-up for skill blocks and fill for progress bars. */
+.skill {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.7s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+.progress-anim {
+  width: 0; /* start collapsed */
+  animation: fillBar 1.2s ease forwards;
+  animation-delay: calc(var(--delay, 0s) + 0.15s);
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fillBar {
+  from { width: 0; }
+  to { width: var(--w, 0%); }
+}
+
+/* Style tweaks for progress visuals */
+.skill .progress { 
+    height: 12px; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    background: rgba(255,255,255,0.04); 
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+.progress-bar { 
+    height: 100%; 
+    transition: width 1s ease-in-out;
+}
+
+/* Progress bar custom colors and skill icon styling */
+.skill { position: relative; }
+.skill .skill-icon {
+  width: 48px;
+  min-width: 48px;
+  text-align: center;
+  color: rgba(255,255,255,0.95);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.skill .skill-icon.fab, .skill .skill-icon.fas {
+  opacity: 0.95;
+}
+.skill .w-100 { /* ensure progress stacks nicely */
+  min-width: 0;
+}
+.skill .progress { margin-top: .5rem; }
+
+/* Color gradients tied to each skill icon */
+.progress-bar.pb-html { background: linear-gradient(45deg,#e34f26,#f06529); }
+.progress-bar.pb-css { background: linear-gradient(45deg,#264de4,#2965f1); }
+.progress-bar.pb-bootstrap { background:rgb(137, 18, 252); }
+.progress-bar.pb-js { background: linear-gradient(45deg,#f7df1e,#f0c000); color:#111; }
+.progress-bar.pb-react { background: linear-gradient(45deg,#61dafb,#00d8ff); }
+.progress-bar.pb-node { background: linear-gradient(45deg,#8cc84b,#3a873a); }
+.progress-bar.pb-git { background: linear-gradient(45deg,#333,#6e5494); }
+.progress-bar.pb-figma { background: linear-gradient(45deg,#f24e1e,#a259ff); }
+.progress-bar.pb-responsive { background: linear-gradient(45deg,#20c997,#17a2b8); }
+
+/* Certificate section styles */
+ .certificates-section {
+            background-color: #000000;
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 1px #dee2e6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .category-title {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        } 
+        
+        .certificates-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding: 40px 0;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .certificates-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Edge */
+        }
+        
+        .certificate-card {
+            flex: 0 0 auto;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            
+        }
+        
+        .certificate-card:hover {
+            box-shadow: 0 0px 9px rgb(234, 4, 215) !important;
+        }
+        .certificate-img {
+            height: 180px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .certificate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .certificate-card:hover .certificate-img img {
+            transform: scale(1.05);
+        }
+        
+        .certificate-content {
+            padding: 20px;
+        }
+        
+        .certificate-content h5 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .certificate-content p {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }  
+        .view-btn{
+          position: relative;
+          color: white !important;
+          background-color: purple !important;
+          
+        }
+        
+        .view-btn:hover{
+          box-shadow: 0 1px 10px purple;
+          border-color: black !important;
+          background-color: #000 !important;
+
+        }  
+        .link-btn{
+          margin-left: 20px;
+        }
+        .link-btn:hover{
+          border-color: white !important;
+          box-shadow: 0 1px 10px purple;
+          background-color: white !important;
+          color: #000 !important;
+
+        }    
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,);
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-btn:hover {
+            background-color: #000000 !important;
+             box-shadow: 0 2px 5px rgb(227, 10, 202);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .scroll-btn.prev {
+            left: 10px;
+        }
+        
+        .scroll-btn.next {
+            right: 10px;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section-title h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .certificate-card {
+                width: 280px;
+            }
+            
+            .scroll-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+
+/* Hire button fixed top-right */
+.hire-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1050;
+  background: var(--light, #fff) !important;
+  color: var(--primary, purple) !important;
+  border: 2px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  padding: 0.5rem 0.85rem;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+/* About section toggle styles */
+#about-toggle {
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+#about-toggle:focus {
+  outline: 2px dashed rgba(255,255,255,0.15);
+  outline-offset: 4px;
+}
+
+/* collapsed state: hide content with smooth height/opacity transition */
+#about .about-content {
+  transition: max-height 0.45s ease, opacity 0.35s ease, padding 0.35s ease;
+  overflow: hidden;
+  max-height: 2000px; /* large default so it shows */
+  opacity: 1;
+}
+#about.about-collapsed .about-content {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* small tweak: ensure right column header stands out */
+.about-content h3.text-primary { color: var(--primary); }
+.hire-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.16);
+}
+@media (max-width: 576px) {
+  .hire-btn { top: 12px; right: 12px; padding: 0.4rem 0.7rem; }
+}
+
 
 img {
   vertical-align: right;
