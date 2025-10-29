@@ -728,6 +728,7 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+  appearance: button;
 }
 
 button:not(:disabled),
@@ -790,10 +791,6 @@ progress {
   height: auto;
 }
 
-[type="search"] {
-  outline-offset: -2px;
-  -webkit-appearance: none;
-}
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -2677,13 +2674,14 @@ pre code {
   background-color: #e9ecef;
   opacity: 1;
 }
-
 input[type="date"].form-control,
 input[type="time"].form-control,
 input[type="datetime-local"].form-control,
 input[type="month"].form-control {
+  -webkit-appearance: none;
   appearance: none;
 }
+
 
 select.form-control:focus::-ms-value {
   color: #495057;
@@ -4430,16 +4428,6 @@ input[type="button"].btn-block {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-
-.custom-control {
-  position: relative;
-  z-index: 1;
-  display: block;
-  min-height: 1.5rem;
-  padding-left: 1.5rem;
-  color-adjust: exact;
-}
-
 .custom-control-inline {
   display: inline-flex;
   margin-right: 1rem;
@@ -4717,13 +4705,14 @@ input[type="button"].btn-block {
   background-color: #e9ecef;
   border-left: inherit;
   border-radius: 0 0.25rem 0.25rem 0;
-}
-
 .custom-range {
   width: 100%;
   height: 1.4rem;
   padding: 0;
   background-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
   appearance: none;
 }
 
