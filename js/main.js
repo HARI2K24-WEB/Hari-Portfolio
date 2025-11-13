@@ -2,7 +2,6 @@
  document.addEventListener('DOMContentLoaded', function() {
             // Initialize all scrollable containers
             const containers = document.querySelectorAll('.certificates-container');
-            
             containers.forEach(container => {
                 const scrollElement = container.querySelector('.certificates-scroll');
                 const prevBtn = container.querySelector('.scroll-btn.prev');
