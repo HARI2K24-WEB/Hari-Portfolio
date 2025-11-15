@@ -12,13 +12,13 @@ Title & Short Description – Introduce it as my personal portfolio showcasing m
 
 ✨ Features – Responsive design, smooth scroll, animated skills, certificates with “View” button, and project showcase with GitHub links.
 
-🧰 Tech Stack – HTML, CSS, JavaScript, Bootstrap, Font Awesome, Typed.js, Owl Carousel, and Lightbox.
+🧰 Tech Stack – HTML, CSS, JavaScript, Bootstrap, Font Awesome, Typed.js, Owl Carousel, and Lightbox..
 
-⚙️ Installation / Setup Guide – Explain how to clone and run locally using VS Code or browser.
+⚙️ Installation / Setup Guide – Explain how to clone and run locally using VS Code or browser..
 
-🚀 Live Demo – Placeholder link for Netlify or GitHub Pages.
+🚀 Live Demo – Placeholder link for Netlify or GitHub Pages..
 
-📸 Screenshots – Placeholder section for adding screenshots.
+📸 Screenshots – Placeholder section for adding screenshots..
 
 💼 Projects – Highlight: Login Page, Mouse Tracking, Photo Booth, Python Projects.
 
